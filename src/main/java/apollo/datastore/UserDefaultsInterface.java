@@ -1,22 +1,22 @@
 package apollo.datastore;
 
 public interface UserDefaultsInterface {
-    public long getMaxSessions();
-    public void setMaxSessions(long maxSessions);
-    public boolean isExclusiveSession();
-    public boolean getExclusiveSession();
-    public void setExclusiveSession(boolean exclusiveSession);
-    public long getSessionTimeout();
-    public void setSessionTimeout(long sessionTimeout);
-    public long getMaxFailedAttempts();
-    public void setMaxFailedAttempts(long maxFailedAttempts);
-    public boolean isUseTimeSlots();
-    public boolean getUseTimeSlots();
-    public void setUseTimeSlots(boolean useTimeSlots);
-    public boolean isPreactivated();
-    public boolean getPreactivated();
-    public void setPreactivated(boolean preactivated);
-    public boolean isDisabled();
-    public boolean getDisabled();
-    public void setDisabled(boolean disabled);
+    long getMaxSessions();
+    void setMaxSessions(long maxSessions);
+    boolean isExclusiveSession();
+    boolean getExclusiveSession();
+    void setExclusiveSession(boolean exclusiveSession);
+    long getSessionTimeout();
+    void setSessionTimeout(long sessionTimeout);
+    long getMaxFailedAttempts();
+    void setMaxFailedAttempts(long maxFailedAttempts);
+    boolean isUseTimeSlots();
+    boolean getUseTimeSlots();
+    void setUseTimeSlots(boolean useTimeSlots);
+    boolean isPreactivated();
+    boolean getPreactivated();
+    void setPreactivated(boolean preactivated);
+    boolean isDisabled();
+    boolean getDisabled();
+    void setDisabled(boolean disabled);
 }
