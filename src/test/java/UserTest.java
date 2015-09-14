@@ -2,9 +2,8 @@ import static org.junit.Assert.*;
 
 import apollo.datastore.MiscFunctions;
 import apollo.datastore.User;
-import apollo.datastore.UserDefaults;
-
-import java.util.Date;
+import apollo.datastore.UserDefaultsImpl;
+import apollo.datastore.UserDefaultsInterface;
 
 import org.junit.*;
 
@@ -15,35 +14,37 @@ public class UserTest {
     private String emailAddress = "kerafill1116@gmail.com";
     // 32400;asia_tokyo;Asia/Tokyo
     private String timeZoneId = "asia_tokyo";
+    private UserDefaultsInterface defaults = new UserDefaultsImpl();
+
 
     @Test
     public void testStringStringStringString() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
         assertEquals(userId, user.getUserId());
         assertEquals(MiscFunctions.getEncryptedHash(password, User.PASSWORD_HASH_ALGORITHM), user.getPassword());
         assertEquals(emailAddress, user.getEmailAddress());
-        assertEquals(UserDefaults.getPreactivated(), user.getActivated());
-        assertEquals(UserDefaults.isPreactivated(), user.isActivated());
+        assertEquals(defaults.getPreactivated(), user.getActivated());
+        assertEquals(defaults.isPreactivated(), user.isActivated());
         assertEquals(user.getActivated(), user.isActivated());
-        assertEquals(UserDefaults.getDisabled(), user.getDisabled());
-        assertEquals(UserDefaults.isDisabled(), user.isDisabled());
+        assertEquals(defaults.getDisabled(), user.getDisabled());
+        assertEquals(defaults.isDisabled(), user.isDisabled());
         assertEquals(user.getDisabled(), user.isDisabled());
-        assertEquals(UserDefaults.getMaxSessions(), user.getMaxSessions());
-        assertEquals(UserDefaults.getExclusiveSession(), user.getExclusiveSession());
-        assertEquals(UserDefaults.isExclusiveSession(), user.isExclusiveSession());
+        assertEquals(defaults.getMaxSessions(), user.getMaxSessions());
+        assertEquals(defaults.getExclusiveSession(), user.getExclusiveSession());
+        assertEquals(defaults.isExclusiveSession(), user.isExclusiveSession());
         assertEquals(user.getExclusiveSession(), user.isExclusiveSession());
-        assertEquals(UserDefaults.getSessionTimeout(), user.getSessionTimeout());
+        assertEquals(defaults.getSessionTimeout(), user.getSessionTimeout());
         assertEquals(0L, user.getFailedAttempts());
-        assertEquals(UserDefaults.getMaxFailedAttempts(), user.getMaxFailedAttempts());
-        assertEquals(UserDefaults.getUseTimeSlots(), user.getUseTimeSlots());
-        assertEquals(UserDefaults.isUseTimeSlots(), user.isUseTimeSlots());
+        assertEquals(defaults.getMaxFailedAttempts(), user.getMaxFailedAttempts());
+        assertEquals(defaults.getUseTimeSlots(), user.getUseTimeSlots());
+        assertEquals(defaults.isUseTimeSlots(), user.isUseTimeSlots());
         assertEquals(user.getUseTimeSlots(), user.isUseTimeSlots());
         assertEquals(timeZoneId, user.getTimeZoneId());
     }
 
     @Test
     public void testSetPassword() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
         assertEquals(MiscFunctions.getEncryptedHash(password, User.PASSWORD_HASH_ALGORITHM), user.getPassword());
         String newPassword = "newPassword";
         user.setPassword(newPassword);
@@ -52,7 +53,7 @@ public class UserTest {
 
     @Test
     public void testSetEmailAddress() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
         assertEquals(emailAddress, user.getEmailAddress());
         String newEmailAddress = "new@email.address";
         user.setEmailAddress(newEmailAddress);
@@ -61,26 +62,26 @@ public class UserTest {
 
     @Test
     public void testSetActivated() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
-        assertEquals(UserDefaults.getPreactivated(), user.getActivated());
-        boolean notPreactivated = !UserDefaults.getPreactivated();
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
+        assertEquals(defaults.getPreactivated(), user.getActivated());
+        boolean notPreactivated = !defaults.getPreactivated();
         user.setActivated(notPreactivated);
         assertEquals(notPreactivated, user.getActivated());
     }
 
     @Test
     public void testSetDisabled() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
-        assertEquals(UserDefaults.getDisabled(), user.getDisabled());
-        boolean notDisabled = !UserDefaults.getDisabled();
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
+        assertEquals(defaults.getDisabled(), user.getDisabled());
+        boolean notDisabled = !defaults.getDisabled();
         user.setDisabled(notDisabled);
         assertEquals(notDisabled, user.getDisabled());
     }
 
     @Test
     public void testSetMaxSessions() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
-        assertEquals(UserDefaults.getMaxSessions(), user.getMaxSessions());
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
+        assertEquals(defaults.getMaxSessions(), user.getMaxSessions());
         long newMaxSessions = 14344L;
         user.setMaxSessions(newMaxSessions);
         assertEquals(newMaxSessions, user.getMaxSessions());
@@ -88,17 +89,17 @@ public class UserTest {
 
     @Test
     public void testSetExclusiveSession() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
-        assertEquals(UserDefaults.getExclusiveSession(), user.getExclusiveSession());
-        boolean notExclusiveSession = !UserDefaults.getExclusiveSession();
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
+        assertEquals(defaults.getExclusiveSession(), user.getExclusiveSession());
+        boolean notExclusiveSession = !defaults.getExclusiveSession();
         user.setExclusiveSession(notExclusiveSession);
         assertEquals(notExclusiveSession, user.getExclusiveSession());
     }
 
     @Test
     public void testSetSessionTimeout() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
-        assertEquals(UserDefaults.getSessionTimeout(), user.getSessionTimeout());
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
+        assertEquals(defaults.getSessionTimeout(), user.getSessionTimeout());
         long newSessionTimeout = 14344L;
         user.setSessionTimeout(newSessionTimeout);
         assertEquals(newSessionTimeout, user.getSessionTimeout());
@@ -106,7 +107,7 @@ public class UserTest {
 
     @Test
     public void testSetFailedAttempts() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
         assertEquals(0L, user.getFailedAttempts());
         long newFailedAttempts = 14344L;
         user.setFailedAttempts(newFailedAttempts);
@@ -115,8 +116,8 @@ public class UserTest {
 
     @Test
     public void testSetMaxFailedAttempts() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
-        assertEquals(UserDefaults.getMaxFailedAttempts(), user.getMaxFailedAttempts());
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
+        assertEquals(defaults.getMaxFailedAttempts(), user.getMaxFailedAttempts());
         long newMaxFailedAttempts = 14344L;
         user.setMaxFailedAttempts(newMaxFailedAttempts);
         assertEquals(newMaxFailedAttempts, user.getMaxFailedAttempts());
@@ -124,16 +125,16 @@ public class UserTest {
 
     @Test
     public void testSetUseTimeSlots() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
-        assertEquals(UserDefaults.getUseTimeSlots(), user.getUseTimeSlots());
-        boolean notUseTimeSlots = !UserDefaults.getUseTimeSlots();
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
+        assertEquals(defaults.getUseTimeSlots(), user.getUseTimeSlots());
+        boolean notUseTimeSlots = !defaults.getUseTimeSlots();
         user.setUseTimeSlots(notUseTimeSlots);
         assertEquals(notUseTimeSlots, user.getUseTimeSlots());
     }
 
     @Test
     public void testSetTimeZoneId() {
-        User user = new User(userId, password, emailAddress, timeZoneId);
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
         assertEquals(timeZoneId, user.getTimeZoneId());
         // 28800;asia_singapore;Asia/Singapore
         String newTimeZoneId = "asia_singapore";

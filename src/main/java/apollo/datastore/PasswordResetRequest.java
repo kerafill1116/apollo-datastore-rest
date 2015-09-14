@@ -11,11 +11,11 @@ public class PasswordResetRequest {
     private String requestId;
     private long requestDuration;
 
-    public PasswordResetRequest(String userId) {
+    public PasswordResetRequest(String userId, Date dateRequested, PasswordRequestDefaultsInterface defaults) {
         this.userId = userId;
-        dateRequested = new Date();
+        this.dateRequested = dateRequested;
         requestId = MiscFunctions.getEncryptedHash(String.valueOf(dateRequested.getTime()) + userId, REQUEST_ID_HASH_ALGORITHM);
-        requestDuration = PasswordResetRequestDefaults.getRequestDuration();
+        requestDuration = defaults.getRequestDuration();
     }
 
     public String getUserId() {

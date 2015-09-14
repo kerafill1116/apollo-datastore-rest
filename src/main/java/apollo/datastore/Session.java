@@ -14,10 +14,10 @@ public class Session {
     private Date dateSignedOut;
     private CauseOfDisconnect causeOfDisconnect;
 
-    public Session(User user) {
-        this.dateSignedIn = new Date();
+    public Session(User user, Date dateSignedIn) {
         this.sessionId = MiscFunctions.getEncryptedHash(String.valueOf(dateSignedIn.getTime()) + user.getUserId(), SESSION_ID_HASH_ALGORITHM);
         this.userId = user.getUserId();
+        this.dateSignedIn = dateSignedIn;
         this.lastSessionCheck = dateSignedIn;
         this.sessionTimeout = user.getSessionTimeout();
         this.dateSignedOut = null;

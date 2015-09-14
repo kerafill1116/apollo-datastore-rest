@@ -11,13 +11,15 @@ public class EmailAddressChangeRequestTest {
 
     private String userId = "admin";
     private String newEmailAddress = "kerafill1116@gmail.com";
+    private Date dateRequested = new Date();
 
     @Test
     public void testStringString() {
-        EmailAddressChangeRequest emailAddressChangeRequest = new EmailAddressChangeRequest(userId, newEmailAddress);
+
+        EmailAddressChangeRequest emailAddressChangeRequest = new EmailAddressChangeRequest(userId, newEmailAddress, dateRequested);
         assertEquals(userId, emailAddressChangeRequest.getUserId());
         assertEquals(newEmailAddress, emailAddressChangeRequest.getNewEmailAddress());
-        String requestId = MiscFunctions.getEncryptedHash(String.valueOf(emailAddressChangeRequest.getDateRequested().getTime()) + userId, EmailAddressChangeRequest.REQUEST_ID_HASH_ALGORITHM);
-        assertEquals(requestId, emailAddressChangeRequest.getRequestId());
+        assertEquals(dateRequested, emailAddressChangeRequest.getDateRequested());
+        assertEquals(MiscFunctions.getEncryptedHash(String.valueOf(dateRequested.getTime()) + userId, EmailAddressChangeRequest.REQUEST_ID_HASH_ALGORITHM), emailAddressChangeRequest.getRequestId());
     }
 }

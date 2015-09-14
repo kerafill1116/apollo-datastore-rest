@@ -20,18 +20,18 @@ public class User {
     private String timeZoneId;
     private Date dateCreated;
 
-    public User(String userId, String password, String emailAddress, String timeZoneId) {
+    public User(String userId, String password, String emailAddress, String timeZoneId, UserDefaultsInterface defaults) {
         this.userId = userId;
         this.password = MiscFunctions.getEncryptedHash(password, PASSWORD_HASH_ALGORITHM);
         this.emailAddress = emailAddress;
-        this.activated = UserDefaults.isPreactivated();
-        this.disabled = UserDefaults.isDisabled();
-        this.maxSessions = UserDefaults.getMaxSessions();
-        this.exclusiveSession = UserDefaults.isExclusiveSession();
-        this.sessionTimeout = UserDefaults.getSessionTimeout();
+        this.activated = defaults.isPreactivated();
+        this.disabled = defaults.isDisabled();
+        this.maxSessions = defaults.getMaxSessions();
+        this.exclusiveSession = defaults.isExclusiveSession();
+        this.sessionTimeout = defaults.getSessionTimeout();
         this.failedAttempts = 0L;
-        this.maxFailedAttempts = UserDefaults.getMaxFailedAttempts();
-        this.useTimeSlots = UserDefaults.isUseTimeSlots();
+        this.maxFailedAttempts = defaults.getMaxFailedAttempts();
+        this.useTimeSlots = defaults.isUseTimeSlots();
         this.timeZoneId = timeZoneId;
         this.dateCreated = new Date();
     }

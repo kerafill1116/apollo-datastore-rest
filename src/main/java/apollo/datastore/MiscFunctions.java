@@ -16,8 +16,7 @@ public class MiscFunctions {
             this.name = name;
         }
 
-        @Override
-        public String toString() {
+        public String getName() {
             return name;
         }
     }
@@ -33,7 +32,7 @@ public class MiscFunctions {
         StringBuilder sb = new StringBuilder();
         str = (str != null) ? str : "";
         try {
-            md = MessageDigest.getInstance(hashAlgorithm.toString());
+            md = MessageDigest.getInstance(hashAlgorithm.getName());
             md.update(str.getBytes());
             byte byteData[] = md.digest();
             for(Byte byteDatum : byteData)

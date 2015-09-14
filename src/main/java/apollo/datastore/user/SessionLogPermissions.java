@@ -18,9 +18,4 @@ public enum SessionLogPermissions {
     public long getCode() {
         return code;
     }
-
-    @Override
-    public String toString() {
-        return String.valueOf(code);
-    }
 }

@@ -11,11 +11,11 @@ public class UserActivationRequest {
     private String requestId;
     private long requestDuration;
 
-    public UserActivationRequest(String userId) {
+    public UserActivationRequest(String userId, Date dateRequested, UserActivationRequestDefaultsInterface defaults) {
         this.userId = userId;
-        dateRequested = new Date();
+        this.dateRequested = dateRequested;
         requestId = MiscFunctions.getEncryptedHash(String.valueOf(dateRequested.getTime()) + userId, REQUEST_ID_HASH_ALGORITHM);
-        requestDuration = UserActivationRequestDefaults.getRequestDuration();
+        requestDuration = defaults.getRequestDuration();
     }
 
     public String getUserId() {

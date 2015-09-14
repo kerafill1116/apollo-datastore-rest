@@ -19,23 +19,11 @@ public class TimeZone {
         return timeZoneId;
     }
 
-    public void setTimeZoneId(String timeZoneId) {
-        this.timeZoneId = timeZoneId;
-    }
-
-    public long getOffset() {
-        return offset;
-    }
-
-    public void setOffset(long offset) {
-        this.offset = offset;
-    }
-
     public String getJavaTimeZoneId() {
         return javaTimeZoneId;
     }
 
-    public void setJavaTimeZoneId(String javaTimeZoneId) {
-        this.javaTimeZoneId = javaTimeZoneId;
+    public long getOffset() {
+        return offset;
     }
 }

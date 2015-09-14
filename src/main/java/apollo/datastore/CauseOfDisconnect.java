@@ -14,8 +14,7 @@ public enum CauseOfDisconnect {
         this.code = code;
     }
 
-    @Override
-    public String toString() {
-        return String.valueOf(code);
+    public long getCode() {
+        return code;
     }
 }

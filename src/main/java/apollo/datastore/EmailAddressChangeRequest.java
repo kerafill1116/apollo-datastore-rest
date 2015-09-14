@@ -11,10 +11,10 @@ public class EmailAddressChangeRequest {
     private Date dateRequested;
     private String requestId;
 
-    public EmailAddressChangeRequest(String userId, String newEmailAddress) {
+    public EmailAddressChangeRequest(String userId, String newEmailAddress, Date dateRequested) {
         this.userId = userId;
         this.newEmailAddress = newEmailAddress;
-        dateRequested = new Date();
+        this.dateRequested = dateRequested;
         requestId = MiscFunctions.getEncryptedHash(String.valueOf(dateRequested.getTime()) + userId, REQUEST_ID_HASH_ALGORITHM);
     }
 

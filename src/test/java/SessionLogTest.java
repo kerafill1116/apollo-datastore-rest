@@ -4,6 +4,8 @@ import apollo.datastore.CauseOfDisconnect;
 import apollo.datastore.Session;
 import apollo.datastore.SessionLog;
 import apollo.datastore.User;
+import apollo.datastore.UserDefaultsImpl;
+import apollo.datastore.UserDefaultsInterface;
 
 import java.util.Date;
 
@@ -20,8 +22,10 @@ public class SessionLogTest {
         String emailAddress = "kerafill1116@gmail.com";
         // 32400;asia_tokyo;Asia/Tokyo
         String timeZoneId = "asia_tokyo";
-        User user = new User(userId, password, emailAddress, timeZoneId);
-        session = new Session(user);
+        UserDefaultsInterface defaults = new UserDefaultsImpl();
+        User user = new User(userId, password, emailAddress, timeZoneId, defaults);
+        Date dateSignedIn = new Date();
+        session = new Session(user, dateSignedIn);
     }
 
     @Test
