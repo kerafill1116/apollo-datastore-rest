@@ -11,6 +11,8 @@ public class UserActivationRequest {
     private String requestId;
     private long requestDuration;
 
+    private UserActivationRequest() { }
+
     public UserActivationRequest(String userId, Date dateRequested, UserActivationRequestDefaultsInterface defaults) {
         this.userId = userId;
         this.dateRequested = dateRequested;

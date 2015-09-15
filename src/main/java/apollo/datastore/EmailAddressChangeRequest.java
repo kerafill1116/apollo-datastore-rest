@@ -11,6 +11,8 @@ public class EmailAddressChangeRequest {
     private Date dateRequested;
     private String requestId;
 
+    private EmailAddressChangeRequest() { }
+
     public EmailAddressChangeRequest(String userId, String newEmailAddress, Date dateRequested) {
         this.userId = userId;
         this.newEmailAddress = newEmailAddress;

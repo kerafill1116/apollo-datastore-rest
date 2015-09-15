@@ -20,6 +20,8 @@ public class User {
     private String timeZoneId;
     private Date dateCreated;
 
+    private User() { }
+
     public User(String userId, String password, String emailAddress, String timeZoneId, UserDefaultsInterface defaults) {
         this.userId = userId;
         this.password = MiscFunctions.getEncryptedHash(password, PASSWORD_HASH_ALGORITHM);

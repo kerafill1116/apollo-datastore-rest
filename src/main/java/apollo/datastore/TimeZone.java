@@ -9,6 +9,8 @@ public class TimeZone {
     private String javaTimeZoneId;
     private long offset;
 
+    private TimeZone() { }
+
     public TimeZone(String timeZoneId, String javaTimeZoneId, long offset) {
         this.timeZoneId = timeZoneId;
         this.javaTimeZoneId = javaTimeZoneId;

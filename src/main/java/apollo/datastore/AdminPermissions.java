@@ -7,6 +7,8 @@ public class AdminPermissions {
     private long sessionsPermissions;
     private long sessionLogsPermissions;
 
+    private AdminPermissions() { }
+
     public AdminPermissions(String userId, long usersPermissions, long sessionsPermissions, long sessionLogsPermissions) {
         this.userId = userId;
         this.usersPermissions = usersPermissions;

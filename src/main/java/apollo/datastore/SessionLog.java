@@ -12,6 +12,8 @@ public class SessionLog {
     private Date dateSignedOut;
     private CauseOfDisconnect causeOfDisconnect;
 
+    private SessionLog() { }
+
     public SessionLog(Session session) {
         sessionId = session.getSessionId();
         userId = session.getUserId();

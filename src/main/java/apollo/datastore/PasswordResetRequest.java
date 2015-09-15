@@ -11,6 +11,8 @@ public class PasswordResetRequest {
     private String requestId;
     private long requestDuration;
 
+    private PasswordResetRequest() { }
+
     public PasswordResetRequest(String userId, Date dateRequested, PasswordRequestDefaultsInterface defaults) {
         this.userId = userId;
         this.dateRequested = dateRequested;

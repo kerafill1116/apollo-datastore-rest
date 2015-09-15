@@ -14,6 +14,8 @@ public class Session {
     private Date dateSignedOut;
     private CauseOfDisconnect causeOfDisconnect;
 
+    private Session() { }
+
     public Session(User user, Date dateSignedIn) {
         this.sessionId = MiscFunctions.getEncryptedHash(String.valueOf(dateSignedIn.getTime()) + user.getUserId(), SESSION_ID_HASH_ALGORITHM);
         this.userId = user.getUserId();
