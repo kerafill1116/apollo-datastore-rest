@@ -1,7 +1,12 @@
 package apollo.datastore;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class UserPermissions {
 
+    @Id
     private String userId;
     private long userPermissions;
     private long sessionPermissions;

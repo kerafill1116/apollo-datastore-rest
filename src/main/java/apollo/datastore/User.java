@@ -1,11 +1,16 @@
 package apollo.datastore;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
 import java.util.Date;
 
+@Entity
 public class User {
 
     public static final MiscFunctions.HashAlgorithm PASSWORD_HASH_ALGORITHM = MiscFunctions.HashAlgorithm.SHA_256;
 
+    @Id
     private String userId;
     private String password;
     private String emailAddress;

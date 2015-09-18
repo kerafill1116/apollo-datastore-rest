@@ -65,6 +65,11 @@
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>${jersey.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-mvc-jsp</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
 
         <!-- Jackson dependencies -->
         <dependency>
@@ -208,6 +213,7 @@
                     <props>${basedir}/datanucleus.properties</props>
                     <verbose>true</verbose>
                     <enhancerName>ASM</enhancerName>
+                    <!-- solves "The command line is too long" errors in ms windows -->
                     <fork>false</fork>
                 </configuration>
                 <executions>
