@@ -1,6 +1,6 @@
 package apollo.datastore;
 
-public class PasswordResetRequestDefaultsImpl implements PasswordRequestDefaultsInterface {
+public class PasswordResetRequestDefaultsImpl implements PasswordResetRequestDefaultsInterface {
 
     private static long requestDuration = 1L;
 

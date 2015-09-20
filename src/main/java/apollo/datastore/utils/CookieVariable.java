@@ -1,6 +1,6 @@
 package apollo.datastore.utils;
 
-public enum Cookie {
+public enum CookieVariable {
     LANG("lang"),
     SESSION_ID("session-id"),
     REMEMBER_ME("remember-me"),
@@ -13,7 +13,7 @@ public enum Cookie {
 
     private final String name;
 
-    Cookie(String name) {
+    CookieVariable(String name) {
         this.name = name;
     }
 

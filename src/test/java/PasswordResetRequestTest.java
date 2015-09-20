@@ -1,9 +1,9 @@
 import static org.junit.Assert.*;
 
 import apollo.datastore.MiscFunctions;
-import apollo.datastore.PasswordRequestDefaultsInterface;
-import apollo.datastore.PasswordResetRequest;
 import apollo.datastore.PasswordResetRequestDefaultsImpl;
+import apollo.datastore.PasswordResetRequestDefaultsInterface;
+import apollo.datastore.PasswordResetRequest;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ public class PasswordResetRequestTest {
 
     private String userId = "admin";
     private Date dateRequested = new Date();
-    private PasswordRequestDefaultsInterface defaults = new PasswordResetRequestDefaultsImpl();
+    private PasswordResetRequestDefaultsInterface defaults = new PasswordResetRequestDefaultsImpl();
 
     @Test
     public void testString() {

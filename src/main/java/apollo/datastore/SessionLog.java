@@ -1,9 +1,14 @@
 package apollo.datastore;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
 import java.util.Date;
 
+@Entity
 public class SessionLog {
 
+    @Id
     private String sessionId;
     private String userId;
     private Date dateSignedIn;

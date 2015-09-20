@@ -1,5 +1,6 @@
 .idea/
 eclipse-launch-profiles/
+lib/
 target/
 *.iml
 datanucleus.log

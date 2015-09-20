@@ -1,7 +1,7 @@
 import static org.junit.Assert.*;
 
-import apollo.datastore.PasswordRequestDefaultsInterface;
 import apollo.datastore.PasswordResetRequestDefaultsImpl;
+import apollo.datastore.PasswordResetRequestDefaultsInterface;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
@@ -9,7 +9,7 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PasswordResetRequestDefaultsImplTest {
 
-    private PasswordRequestDefaultsInterface defaults = new PasswordResetRequestDefaultsImpl();
+    private PasswordResetRequestDefaultsInterface defaults = new PasswordResetRequestDefaultsImpl();
 
     @Test
     public void testGetRequestDuration() {

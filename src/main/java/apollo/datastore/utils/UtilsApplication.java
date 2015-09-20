@@ -1,6 +1,8 @@
 package apollo.datastore.utils;
 
 import apollo.datastore.AdminPermissions;
+import apollo.datastore.Session;
+import apollo.datastore.SessionLog;
 import apollo.datastore.TimeZone;
 import apollo.datastore.User;
 import apollo.datastore.UserPermissions;
@@ -20,12 +22,14 @@ public class UtilsApplication extends ResourceConfig {
         ObjectifyService.register(User.class);
         ObjectifyService.register(AdminPermissions.class);
         ObjectifyService.register(UserPermissions.class);
+        ObjectifyService.register(Session.class);
+        ObjectifyService.register(SessionLog.class);
     }
 
     public UtilsApplication() {
-        //  property(JspMvcFeature.TEMPLATE_BASE_PATH, "/WEB-INF/classes");
+        // property(JspMvcFeature.TEMPLATE_BASE_PATH, "/WEB-INF/classes");
         register(JspMvcFeature.class);
-        register(LangRequestFilter.class);
+        register(LangFilter.class);
         register(UtilsResource.class);
     }
 }

@@ -1,6 +1,6 @@
 package apollo.datastore;
 
-public interface PasswordRequestDefaultsInterface {
+public interface PasswordResetRequestDefaultsInterface {
     long getRequestDuration();
     void setRequestDuration(long requestDuration);
 }

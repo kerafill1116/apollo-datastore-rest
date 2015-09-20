@@ -1,11 +1,16 @@
 package apollo.datastore;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
 import java.util.Date;
 
+@Entity
 public class Session {
 
     public static final MiscFunctions.HashAlgorithm SESSION_ID_HASH_ALGORITHM = MiscFunctions.HashAlgorithm.SHA_256;
 
+    @Id
     private String sessionId;
     private String userId;
     private Date dateSignedIn;

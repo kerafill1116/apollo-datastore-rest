@@ -13,7 +13,7 @@ public class PasswordResetRequest {
 
     private PasswordResetRequest() { }
 
-    public PasswordResetRequest(String userId, Date dateRequested, PasswordRequestDefaultsInterface defaults) {
+    public PasswordResetRequest(String userId, Date dateRequested, PasswordResetRequestDefaultsInterface defaults) {
         this.userId = userId;
         this.dateRequested = dateRequested;
         requestId = MiscFunctions.getEncryptedHash(String.valueOf(dateRequested.getTime()) + userId, REQUEST_ID_HASH_ALGORITHM);
