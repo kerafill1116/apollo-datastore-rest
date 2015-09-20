@@ -2,7 +2,7 @@ package apollo.datastore.utils;
 
 public enum RequestPropertyVariable {
     SET_COOKIE("setCookie"),
-    LANG(CookieVariable.LANG.getName()),
+    LANG("lang"),
     DEFAULT_LANG("defaultLang"),
     SUPPORTED_LANGUAGES_ARRAY("supportedLanguagesArray"),
     SUPPORTED_LANGUAGES_TEXT_ARRAY("supportedLanguagesTextArray");

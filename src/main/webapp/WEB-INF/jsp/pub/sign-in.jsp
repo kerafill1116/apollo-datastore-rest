@@ -6,6 +6,9 @@
 <jsp:setProperty name="langProperty" property="value" value="${requestScope[langProperty.name]}" />
 <fmt:setLocale value="${langProperty.value}" />
 <fmt:setBundle basename="apollo.datastore.utils.i18n.SignInBundle" var="signInBundle" />
+<jsp:useBean id="defaultLangProperty" class="apollo.datastore.utils.RequestPropertyVariableBean" />
+<jsp:setProperty name="defaultLangProperty" property="name" value="DEFAULT_LANG" />
+<jsp:setProperty name="defaultLangProperty" property="value" value="${requestScope[defaultLangProperty.name]}" />
 
 <jsp:useBean id="userIdVariable" class="apollo.datastore.utils.FormVariableBean" />
 <jsp:setProperty name="userIdVariable" property="name" value="USER_ID" />
@@ -13,6 +16,15 @@
 <jsp:setProperty name="passwordVariable" property="name" value="PASSWORD" />
 <jsp:useBean id="rememberMeVariable" class="apollo.datastore.utils.FormVariableBean" />
 <jsp:setProperty name="rememberMeVariable" property="name" value="REMEMBER_ME" />
+
+<jsp:useBean id="rememberMeCookie" class="apollo.datastore.utils.CookieVariableBean" />
+<jsp:setProperty name="rememberMeCookie" property="name" value="REMEMBER_ME" />
+<jsp:useBean id="userIdCookie" class="apollo.datastore.utils.CookieVariableBean" />
+<jsp:setProperty name="userIdCookie" property="name" value="USER_ID" />
+<c:if test="${not empty cookie[rememberMeCookie.name]}">
+    <jsp:setProperty name="rememberMeVariable" property="value" value="${cookie[rememberMeCookie.name].value}" />
+    <jsp:setProperty name="userIdVariable" property="value" value="${cookie[userIdCookie.name].value}" />
+</c:if>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -28,12 +40,63 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         <script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<c:if test="${langProperty.value ne defaultLangProperty.value}">
+        <!-- Link messages file for localized validation. -->
+        <script type="text/javascript" src="/js/messages_${langProperty.value}.min.js"></script>
+</c:if>
         <link rel="stylesheet" href="/css/styles.css" />
         <script type="text/javascript">
 $(document).ready(function() {
+    signInForm = $('#sign-in-form');
+    userIdInput = $('#user-id');
+    userIdInput.attr('value', '<c:out value="${userIdVariable.value}" />');
+    userIdInput.popover({placement: 'bottom', trigger: 'manual', content: '_'});
+<c:if test="${not empty rememberMeVariable.value}">
+    $('#remember-me').attr('checked', true);
+</c:if>
+    $('#clear-btn').click(function () {
+        signInFormValidator.resetForm();
+        this.form.reset();
+    });
     $('#reset-password-request-link').attr('href', '/utils/reset-password-request');
     $('#register-link').attr('href', '/utils/register');
+
+    signInFormValidator = signInForm.validate({
+        submitHandler: function(form) {
+
+        },
+        rules: {
+            '${userIdVariable.name}': {
+                minlength: 5,
+                maxlength: 32,
+                required: true
+            }
+        },
+        showErrors: function(errorMap, errorList) {
+            for(var i = 0; i < errorList.length; ++i) {
+                var errorListItem = $(errorList[i].element);
+                var popoverDiv = errorListItem.next();
+                if(!popoverDiv.length) {
+                    errorListItem.popover('show');
+                    popoverDiv = errorListItem.next();
+                    // must be added to override computed left property
+                    popoverDiv.css({'left': '0px', 'margin-left': '10px', 'margin-right': '10px'});
+                    popoverDiv.find('.popover-content').addClass('text-danger');
+                }
+                popoverDiv.find('.popover-content').html(errorList[i].message);
+            }
+        },
+        onkeyup: function(element, event) {
+            if(signInFormValidator.element(element))
+                $(element).popover('hide');
+        },
+        onfocusout: function(element, event) {
+            if(signInFormValidator.element(element))
+                $(element).popover('hide');
+        }
+    });
 });
         </script>
     </head>
@@ -68,7 +131,7 @@ $(document).ready(function() {
 
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-offset-3 col-sm-8">
-                            <input id="submit-btn" type="button" class="btn btn-default" value="<fmt:message key='sign_in_button' bundle='${signInBundle}' />" />
+                            <input id="submit-btn" type="submit" class="btn btn-default" value="<fmt:message key='sign_in_button' bundle='${signInBundle}' />" />
                             <input id="clear-btn" type="reset" class="btn btn-default" value="<fmt:message key='clear_button' bundle='${signInBundle}' />" />
                         </div>
                     </div>

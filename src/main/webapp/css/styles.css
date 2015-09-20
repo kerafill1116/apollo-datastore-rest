@@ -58,6 +58,11 @@ label {
     margin-bottom: 15px;
 }
 
+.popover-content {
+    font-size: 12px;
+    padding: 3px 7px;
+}
+
 .blink {
     -webkit-animation-name: blinker;
     -webkit-animation-duration: 0.5s;

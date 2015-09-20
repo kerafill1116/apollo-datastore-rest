@@ -1,7 +1,7 @@
 package apollo.datastore.utils;
 
 public enum QueryVariable {
-    LANG(CookieVariable.LANG.getName());
+    LANG("lang");
 
     private final String name;
 
