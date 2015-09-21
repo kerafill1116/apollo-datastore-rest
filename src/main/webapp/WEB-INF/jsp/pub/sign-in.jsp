@@ -49,12 +49,16 @@
         <link rel="stylesheet" href="/css/styles.css" />
         <script type="text/javascript">
 $(document).ready(function() {
+    signInModal = $('#sign-in-modal');
+    signInModal.modal({backdrop: 'static', keyboard: false, show: false});
     signInForm = $('#sign-in-form');
     userIdInput = $('#user-id');
     userIdInput.attr('value', '<c:out value="${userIdVariable.value}" />');
     userIdInput.popover({placement: 'bottom', trigger: 'manual', content: '_'});
+    passwordInput = $('#password');
+    rememberMeCheckbox = $('#remember-me');
 <c:if test="${not empty rememberMeVariable.value}">
-    $('#remember-me').attr('checked', true);
+    rememberMeCheckbox.attr('checked', true);
 </c:if>
     $('#clear-btn').click(function () {
         signInFormValidator.resetForm();
@@ -63,9 +67,38 @@ $(document).ready(function() {
     $('#reset-password-request-link').attr('href', '/utils/reset-password-request');
     $('#register-link').attr('href', '/utils/register');
 
+    function hideModal() {
+        signInModal.modal('hide');
+        signInModal.off('shown.bs.modal');
+    }
+
     signInFormValidator = signInForm.validate({
         submitHandler: function(form) {
-
+            var formData = {
+                '${userIdVariable.name}': userIdInput.val(),
+                '${passwordVariable.name}': passwordInput.val(),
+                '${rememberMeVariable.name}': rememberMeCheckbox.prop('checked')
+            };
+            signInModal.on('shown.bs.modal', function(event) {
+                $.ajax({
+                    cache: false,
+                    accepts: 'application/json',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '/utils/sign-in',
+                    data: JSON.stringify(formData)
+                }).done(function(data, textStatus, jqXHR) {
+                    setTimeout(hideModal, 500);
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    signInModal.find('.modal-content').html(textStatus);
+                    signInModal.addClass('text-danger');
+                    setTimeout(hideModal, 500);
+                });
+            });
+            signInModal.find('.modal-content').html('<fmt:message key="signing_in" bundle="${signInBundle}" />');
+            signInModal.removeClass('text-danger');
+            signInModal.modal('show');
         },
         rules: {
             '${userIdVariable.name}': {
@@ -109,6 +142,12 @@ $(document).ready(function() {
                         <div class="row"><h3 class="col-xs-12 col-sm-offset-3 col-sm-9"><fmt:message key="page_header" bundle="${signInBundle}" /></h3></div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content"></div>
             </div>
         </div>
 

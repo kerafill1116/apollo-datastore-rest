@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class FormVariableBean implements Serializable {
 
+    public static final String USER_ID = FormVariable.USER_ID.getName();
+
     private FormVariable variable;
     private String value;
 

@@ -49,10 +49,11 @@ public class LangFilter implements ContainerRequestFilter, ContainerResponseFilt
     public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext)
             throws IOException {
 
-        boolean setCookie = (boolean)containerRequestContext.getProperty(RequestPropertyVariable.SET_COOKIE.getName());
-        String language = (String)containerRequestContext.getProperty(RequestPropertyVariable.LANG.getName());
+        // because request filter is not pre-matching, need to check if property above was set or not
+        Object setCookie = containerRequestContext.getProperty(RequestPropertyVariable.SET_COOKIE.getName());
 
-        if(setCookie) {
+        if(setCookie != null && (boolean)setCookie) {
+            String language = (String)containerRequestContext.getProperty(RequestPropertyVariable.LANG.getName());
             NewCookie newLangCookie = new NewCookie(CookieVariable.LANG.getName(), language, CookieVariable.LANG_PATH, null, null, CookieVariable.MAX_AGE, false);
             containerResponseContext.getHeaders().add(HttpHeaders.SET_COOKIE, newLangCookie);
         }

@@ -47,7 +47,12 @@ label {
 }
 
 .modal-content {
+    display: inline;
     padding: 5px 5px;
+}
+
+.modal-dialog {
+    text-align: center
 }
 
 .page-header {

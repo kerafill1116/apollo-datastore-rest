@@ -16,8 +16,8 @@
         <appengine.version>1.9.26</appengine.version>
         <gcloud.plugin.version>2.0.9.76.v20150902</gcloud.plugin.version>
 
-        <jersey.version>2.21</jersey.version>
-        <jackson.version>2.6.1</jackson.version>
+        <jersey.version>2.21.1</jersey.version>
+        <jackson.version>2.6.2</jackson.version>
         <objectify.version>5.1.8</objectify.version>
         <junit.version>4.12</junit.version>
 
@@ -60,11 +60,13 @@
             <artifactId>jersey-container-servlet-core</artifactId>
             <version>${jersey.version}</version>
         </dependency>
+        <!-- jersey jackson json provider -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>${jersey.version}</version>
         </dependency>
+        <!-- jersey jsp mvc template -->
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-mvc-jsp</artifactId>
@@ -85,11 +87,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-json-provider</artifactId>
             <version>${jackson.version}</version>
         </dependency>
 
