@@ -11,14 +11,13 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class FormVariableExceptionMapper implements ExceptionMapper<FormVariableException> {
+public class SessionHandlingExceptionMapper implements ExceptionMapper<SessionHandlingException> {
 
     @Context
     HttpServletRequest httpServletRequest;
 
     @Override
-    public Response toResponse(FormVariableException e) {
-
+    public Response toResponse(SessionHandlingException e) {
         String json = null;
         ObjectMapper mapper = new ObjectMapper();
         try {

@@ -1,5 +1,8 @@
 package apollo.datastore.utils;
 
+import apollo.datastore.Session;
+import apollo.datastore.SessionFactoryAdapter;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
@@ -34,6 +37,9 @@ public class UtilsResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response signIn(SignInData data) {
+
+        Session session = SessionFactoryAdapter.getInstance().signIn(data.userId, data.password);
+
         return Response.ok().build();
     }
 

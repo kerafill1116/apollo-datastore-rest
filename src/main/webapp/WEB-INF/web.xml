@@ -50,7 +50,8 @@
                 org.glassfish.jersey.jackson.JacksonFeature,
                 apollo.datastore.utils.LangFilter,
                 apollo.datastore.utils.UtilsResource,
-                apollo.datastore.utils.FormVariableExceptionMapper
+                apollo.datastore.utils.FormVariableExceptionMapper,
+                apollo.datastore.utils.SessionHandlingExceptionMapper
             </param-value>
         </init-param>
 

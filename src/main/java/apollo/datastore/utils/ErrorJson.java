@@ -23,6 +23,9 @@ public class ErrorJson {
             case REQUIRED_USER_ID:
                 errorMessage = errorMessagesBundle.getString("required_user_id");
                 break;
+            case NON_EXISTENT_USER:
+                errorMessage = errorMessagesBundle.getString("non_existent_user");
+                break;
             default:
                 errorMessage = errorMessagesBundle.getString("invalid_error");
         }
