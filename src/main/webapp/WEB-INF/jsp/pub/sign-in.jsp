@@ -30,7 +30,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title><fmt:message key="title" bundle="${signInBundle}" /></title>
+        <title><fmt:message key="TITLE" bundle="${signInBundle}" /></title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="/css/bootstrap.min.css" />
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -96,7 +96,7 @@ $(document).ready(function() {
                     setTimeout(hideModal, 500);
                 });
             });
-            signInModal.find('.modal-content').html('<fmt:message key="signing_in" bundle="${signInBundle}" />');
+            signInModal.find('.modal-content').html('<fmt:message key="SIGNING_IN" bundle="${signInBundle}" />');
             signInModal.removeClass('text-danger');
             signInModal.modal('show');
         },
@@ -139,7 +139,7 @@ $(document).ready(function() {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-                        <div class="row"><h3 class="col-xs-12 col-sm-offset-3 col-sm-9"><fmt:message key="page_header" bundle="${signInBundle}" /></h3></div>
+                        <div class="row"><h3 class="col-xs-12 col-sm-offset-3 col-sm-9"><fmt:message key="PAGE_HEADER" bundle="${signInBundle}" /></h3></div>
                     </div>
                 </div>
             </div>
@@ -159,35 +159,35 @@ $(document).ready(function() {
                     <form name="sign-in-form" class="form-horizontal" id="sign-in-form" role="form">
                     <fieldset>
                     <div class="form-group">
-                        <label class="col-xs-12 col-sm-3 control-label" for="user-id"><fmt:message key="user_id_label" bundle="${signInBundle}" /></label>
+                        <label class="col-xs-12 col-sm-3 control-label" for="user-id"><fmt:message key="USER_ID_LABEL" bundle="${signInBundle}" /></label>
                         <div class="col-xs-12 col-sm-8"><input name="${userIdVariable.name}" type="text" class="form-control" id="user-id" maxlength="32" required autofocus /></div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-xs-12 col-sm-3 control-label" for="password"><fmt:message key="password_label" bundle="${signInBundle}" /></label>
+                        <label class="col-xs-12 col-sm-3 control-label" for="password"><fmt:message key="PASSWORD_LABEL" bundle="${signInBundle}" /></label>
                         <div class="col-xs-12 col-sm-8"><input name="${passwordVariable.name}" type="password" class="form-control" id="password" maxlength="64" /></div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-offset-3 col-sm-8">
-                            <input id="submit-btn" type="submit" class="btn btn-default" value="<fmt:message key='sign_in_button' bundle='${signInBundle}' />" />
-                            <input id="clear-btn" type="reset" class="btn btn-default" value="<fmt:message key='clear_button' bundle='${signInBundle}' />" />
+                            <input id="submit-btn" type="submit" class="btn btn-default" value="<fmt:message key='SIGN_IN_BUTTON' bundle='${signInBundle}' />" />
+                            <input id="clear-btn" type="reset" class="btn btn-default" value="<fmt:message key='CLEAR_BUTTON' bundle='${signInBundle}' />" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-offset-3 col-sm-8">
-                            <div class="checkbox"><label><input name="${rememberMeVariable.name}" type="checkbox" id="remember-me" value="1" /> <fmt:message key="remember_me" bundle="${signInBundle}" /></label></div>
+                            <div class="checkbox"><label><input name="${rememberMeVariable.name}" type="checkbox" id="remember-me" value="1" /> <fmt:message key="REMEMBER_ME" bundle="${signInBundle}" /></label></div>
                         </div>
                     </div>
                     </fieldset>
                     </form>
 
                     <div class="row">
-                        <div class="col-xs-12 col-sm-offset-3 col-sm-8"><fmt:message key="forgot_password" bundle="${signInBundle}" /></div>
+                        <div class="col-xs-12 col-sm-offset-3 col-sm-8"><fmt:message key="FORGOT_PASSWORD" bundle="${signInBundle}" /></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12 col-sm-offset-3 col-sm-8"><fmt:message key="register_now" bundle="${signInBundle}" /></div>
+                        <div class="col-xs-12 col-sm-offset-3 col-sm-8"><fmt:message key="REGISTER_NOW" bundle="${signInBundle}" /></div>
                     </div>
 
                 </div>

@@ -11,13 +11,13 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-8 col-sm-10">
-                        <a href="/utils/sign-in" class="btn btn-default" role="button"><span class="glyphicon glyphicon-log-in"></span><span class="hidden-xs"> <fmt:message key="sign_in" bundle="${topNavbarBundle}" /></span></a>
-                        <a href="/utils/register" class="btn btn-default" role="button"><span class="glyphicon glyphicon-pencil"></span><span class="hidden-xs"> <fmt:message key="register" bundle="${topNavbarBundle}" /></span></a>
+                        <a href="/utils/sign-in" class="btn btn-default" role="button"><span class="glyphicon glyphicon-log-in"></span><span class="hidden-xs"> <fmt:message key="SIGN_IN" bundle="${topNavbarBundle}" /></span></a>
+                        <a href="/utils/register" class="btn btn-default" role="button"><span class="glyphicon glyphicon-pencil"></span><span class="hidden-xs"> <fmt:message key="REGISTER" bundle="${topNavbarBundle}" /></span></a>
                     </div>
                     <div class="col-xs-4 col-sm-2 text-right">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <span class="hidden-xs"><fmt:message key="language" bundle="${topNavbarBundle}" /> </span><span class="glyphicon glyphicon-globe"></span></button>
+                                <span class="hidden-xs"><fmt:message key="LANGUAGE" bundle="${topNavbarBundle}" /> </span><span class="glyphicon glyphicon-globe"></span></button>
                             <ul class="dropdown-menu dropdown-menu-right text-left" role="menu">
 <c:forEach var="supportedLanguage" items="${supportedLanguagesArrayProperty.value}" varStatus="loopCounter" >
                                 <li><a href="?${langProperty.name}=${supportedLanguage}">${supportedLanguagesTextArrayProperty.value[loopCounter.index]}</a></li>

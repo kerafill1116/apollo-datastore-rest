@@ -7,4 +7,5 @@ public interface UserFactoryInterface {
     User tAddWithPermissions(String userId, String password, String emailAddress, String timeZoneId,
                              final long usersPermissions, final long sessionsPermissions, final long sessionLogsPermissions,
                              final long userPermissions, final long sessionPermissions, final long sessionLogPermissions);
+    boolean tnUpdateFailedAttempts(User user);
 }

@@ -16,19 +16,16 @@ public class ErrorJson {
     private Error error;
     private String errorMessage;
 
+    public ErrorJson(Error error) {
+        this.error = error;
+        ResourceBundle errorMessagesBundle = ResourceBundle.getBundle("apollo.datastore.utils.i18n.ErrorMessagesBundle");
+        errorMessage = errorMessagesBundle.getString(error.toString());
+    }
+
     public ErrorJson(Error error, String lang) {
         this.error = error;
         ResourceBundle errorMessagesBundle = ResourceBundle.getBundle("apollo.datastore.utils.i18n.ErrorMessagesBundle", new Locale(lang));
-        switch(error) {
-            case REQUIRED_USER_ID:
-                errorMessage = errorMessagesBundle.getString("required_user_id");
-                break;
-            case NON_EXISTENT_USER:
-                errorMessage = errorMessagesBundle.getString("non_existent_user");
-                break;
-            default:
-                errorMessage = errorMessagesBundle.getString("invalid_error");
-        }
+        errorMessage = errorMessagesBundle.getString(error.toString());
     }
 
     public Error getError() {
@@ -45,8 +42,8 @@ public class ErrorJson {
         public void serialize(ErrorJson errorJson, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
                 throws IOException, JsonProcessingException {
             jsonGenerator.writeStartObject();
-            jsonGenerator.writeNumberField(jsonPropertyVariable.ERROR.getName(), errorJson.getError().getCode());
-            jsonGenerator.writeStringField(jsonPropertyVariable.ERROR_MESSAGE.getName(), errorJson.getErrorMessage());
+            jsonGenerator.writeNumberField(JsonPropertyVariable.ERROR.getName(), errorJson.getError().getCode());
+            jsonGenerator.writeStringField(JsonPropertyVariable.ERROR_MESSAGE.getName(), errorJson.getErrorMessage());
             jsonGenerator.writeEndObject();
         }
     }

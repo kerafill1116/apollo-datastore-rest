@@ -1,12 +1,12 @@
 package apollo.datastore.utils;
 
-public enum jsonPropertyVariable {
+public enum JsonPropertyVariable {
     ERROR("error"),
     ERROR_MESSAGE("error-message");
 
     private final String name;
 
-    jsonPropertyVariable(String name) {
+    JsonPropertyVariable(String name) {
         this.name = name;
     }
 

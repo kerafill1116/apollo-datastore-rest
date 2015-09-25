@@ -19,6 +19,7 @@
         <jersey.version>2.21.1</jersey.version>
         <jackson.version>2.6.2</jackson.version>
         <objectify.version>5.1.8</objectify.version>
+        <oltu.oauth2.version>1.0.1</oltu.oauth2.version>
         <junit.version>4.12</junit.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -48,7 +49,7 @@
             <version>1.2</version>
         </dependency>
 
-        <!-- Jersey dependencies -->
+        <!-- Jersey -->
         <dependency>
             <groupId>org.glassfish.jersey</groupId>
             <artifactId>jersey-bom</artifactId>
@@ -73,7 +74,7 @@
             <version>${jersey.version}</version>
         </dependency>
 
-        <!-- Jackson dependencies -->
+        <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -90,14 +91,14 @@
             <version>${jackson.version}</version>
         </dependency>
 
-        <!-- Objectify dependencies -->
+        <!-- Objectify -->
         <dependency>
             <groupId>com.googlecode.objectify</groupId>
             <artifactId>objectify</artifactId>
             <version>${objectify.version}</version>
         </dependency>
 
-        <!-- JDO dependencies -->
+        <!-- JDO -->
         <dependency>
             <groupId>javax.jdo</groupId>
             <artifactId>jdo-api</artifactId>
@@ -112,6 +113,64 @@
             <groupId>com.google.appengine.orm</groupId>
             <artifactId>datanucleus-appengine</artifactId>
             <version>2.1.2</version>
+        </dependency>
+
+        <!-- Apache Oltu -->
+        <!-- dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.parent</artifactId>
+            <version>${oltu.oauth2.version}</version>
+            <type>pom</type>
+        </dependency -->
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.common</artifactId>
+            <version>${oltu.oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.client</artifactId>
+            <version>${oltu.oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.httpclient4</artifactId>
+            <version>${oltu.oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.dynamicreg.client</artifactId>
+            <version>${oltu.oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.dynamicreg.common</artifactId>
+            <version>${oltu.oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.authzserver</artifactId>
+            <version>${oltu.oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.resourceserver</artifactId>
+            <version>${oltu.oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.resourceserver-filter</artifactId>
+            <version>${oltu.oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.dynamicreg.server</artifactId>
+            <version>${oltu.oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.oltu.oauth2</groupId>
+            <artifactId>org.apache.oltu.oauth2.jwt</artifactId>
+            <version>${oltu.oauth2.version}</version>
         </dependency>
 
         <!-- Test Dependencies -->

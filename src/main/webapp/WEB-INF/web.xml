@@ -44,15 +44,8 @@
 
             <param-name>jersey.config.server.provider.classnames</param-name>
             -->
-            <param-name>jersey.config.server.provider.classnames</param-name>
-            <param-value>
-                org.glassfish.jersey.server.mvc.jsp.JspMvcFeature,
-                org.glassfish.jersey.jackson.JacksonFeature,
-                apollo.datastore.utils.LangFilter,
-                apollo.datastore.utils.UtilsResource,
-                apollo.datastore.utils.FormVariableExceptionMapper,
-                apollo.datastore.utils.SessionHandlingExceptionMapper
-            </param-value>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>apollo.datastore.utils.UtilsApplication</param-value>
         </init-param>
 
     </filter>

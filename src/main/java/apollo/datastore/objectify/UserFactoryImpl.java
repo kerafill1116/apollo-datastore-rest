@@ -49,4 +49,20 @@ public class UserFactoryImpl implements UserFactoryInterface {
             }
         });
     }
+
+    @Override
+    public boolean tnUpdateFailedAttempts(final User user) {
+        return ofy().transactNew(new Work<Boolean>() {
+            public Boolean run() {
+                long failedAttempts = user.getFailedAttempts();
+                long maxFailedAttempts = user.getMaxFailedAttempts();
+                if (maxFailedAttempts >= 0 && failedAttempts >= maxFailedAttempts)
+                    user.setDisabled(true);
+                else
+                    user.setFailedAttempts(++failedAttempts);
+                save(user);
+                return user.getDisabled();
+            }
+        });
+    }
 }

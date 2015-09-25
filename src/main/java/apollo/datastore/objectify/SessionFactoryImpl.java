@@ -2,6 +2,7 @@ package apollo.datastore.objectify;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+import apollo.datastore.MiscFunctions;
 import apollo.datastore.Session;
 import apollo.datastore.SessionFactoryInterface;
 import apollo.datastore.User;
@@ -33,7 +34,7 @@ public class SessionFactoryImpl implements SessionFactoryInterface {
     }
 
     @Override
-    public Session signIn(final String userId, final String password)
+    public Session tSignIn(final String userId, final String password)
             throws SessionHandlingException {
 
         return ofy().transact(new Work<Session>() {
@@ -42,6 +43,17 @@ public class SessionFactoryImpl implements SessionFactoryInterface {
                 User user = userFactory.get(userId);
                 if(user == null)
                     throw new SessionHandlingException(Error.NON_EXISTENT_USER);
+                if(user.getPassword().compareTo(MiscFunctions.getEncryptedHash(password, User.PASSWORD_HASH_ALGORITHM)) != 0) {
+                    if(userFactory.tnUpdateFailedAttempts(user))
+                        throw new SessionHandlingException(Error.MAXED_FAILED_ATTEMPTS);
+                    else
+                        throw new SessionHandlingException(Error.INCORRECT_PASSWORD);
+                }
+                if(!user.getActivated())
+                    throw new SessionHandlingException(Error.NOT_ACTIVATED_USER);
+                if(user.getDisabled())
+                    throw new SessionHandlingException(Error.DISABLED_USER);
+
 
                 return null;
             }

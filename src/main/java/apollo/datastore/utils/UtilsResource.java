@@ -38,7 +38,8 @@ public class UtilsResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response signIn(SignInData data) {
 
-        Session session = SessionFactoryAdapter.getInstance().signIn(data.userId, data.password);
+        Session session = SessionFactoryAdapter.getInstance().tSignIn(data.userId, data.password);
+
 
         return Response.ok().build();
     }
