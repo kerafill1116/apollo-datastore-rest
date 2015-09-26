@@ -1,7 +1,7 @@
 # apollo-datastore-rest
 ReST version of my apollo project.
 
-uses the following:
+Uses the following:
 - Google App Engine
 - Jersey (JAX-RS)
 - JSP MVC Template (Jersey module)
@@ -12,4 +12,5 @@ Data Access methods:
 - JDO (App Engine Datastore ORM)
 
 To be implemented:
-- Apache Oltu Oauth2 protection
+- OAuth-APIs (port OAuth2 Authorization Server to App Engine Datastore)
+- Apache Oltu OAuth2 protection

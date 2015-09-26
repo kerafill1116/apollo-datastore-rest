@@ -122,7 +122,7 @@
             <version>${oltu.oauth2.version}</version>
             <type>pom</type>
         </dependency -->
-        <dependency>
+        <!-- dependency>
             <groupId>org.apache.oltu.oauth2</groupId>
             <artifactId>org.apache.oltu.oauth2.common</artifactId>
             <version>${oltu.oauth2.version}</version>
@@ -171,7 +171,7 @@
             <groupId>org.apache.oltu.oauth2</groupId>
             <artifactId>org.apache.oltu.oauth2.jwt</artifactId>
             <version>${oltu.oauth2.version}</version>
-        </dependency>
+        </dependency -->
 
         <!-- Test Dependencies -->
         <dependency>
